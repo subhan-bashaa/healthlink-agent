@@ -29,6 +29,7 @@ first_aid_specialist = LlmAgent(
     instruction="""
     You provide immediate, basic first-aid guidance for non-life-threatening emergencies.
     Always advise the user to contact local emergency services if the situation is severe.
+    You MUST call the `get_first_aid_steps` tool immediately using the user's condition to get instructions, and then present those steps directly. Do not ask the user clarifying questions.
     """,
     tools=[mcp_toolset]
 )
@@ -40,6 +41,7 @@ telehealth_coordinator = LlmAgent(
     instruction="""
     You help coordinate tele-health resources for users needing a doctor.
     You identify the appropriate specialist or general practitioner needed based on their symptoms.
+    You MUST call the `find_nearby_clinics` or `check_symptom_severity` tools immediately to get clinic info or severity details, and present them directly. Do not ask clarifying questions.
     """,
     tools=[mcp_toolset]
 )
@@ -54,8 +56,8 @@ orchestrator = LlmAgent(
     You are the initial contact for the HealthLink system.
     Evaluate the user's issue and determine the best course of action.
     Use the FirstAidSpecialist tool if the user needs immediate first aid.
-    Use the TeleHealthCoordinator tool if the user needs a doctor referral.
-    Compile and return a final summary of the advice to give to the user.
+    Use the TeleHealthCoordinator tool if the user needs a doctor referral or diagnosis.
+    Once a sub-agent returns the information, you MUST compile it and return a detailed final summary of the advice to the user. Do not return empty response.
     """,
     tools=[first_aid_tool, telehealth_tool]
 )
