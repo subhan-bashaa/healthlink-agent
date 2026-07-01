@@ -62,7 +62,7 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     from app.agent import root_agent
 
     runner = Runner(
-        app=adk_app,
+        node=adk_app,
         session_service=services.get_session_service(),
         artifact_service=services.get_artifact_service(),
         auto_create_session=True,
