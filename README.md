@@ -173,9 +173,6 @@ Below are the visual workflow and branding assets for this project:
 
 ---
 
-## Demo Script
-
-Refer to the official presentation narration in [DEMO_SCRIPT.txt](DEMO_SCRIPT.txt) for a complete walkthrough script during demo presentations.
 # HealthLink-Agent
 
 # HealthLink-Agent
