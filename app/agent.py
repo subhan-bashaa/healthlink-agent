@@ -124,5 +124,5 @@ app = Workflow(
     ]
 )
 
-app.root_agent = app
+object.__setattr__(app, 'root_agent', app)
 root_agent = app
